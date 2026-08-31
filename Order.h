@@ -1,6 +1,7 @@
 #ifndef AAA_COMPARE_H
 #define AAA_COMPARE_H
 
+#include <iostream>
 #include <string>
 #include <cstdint>
 
