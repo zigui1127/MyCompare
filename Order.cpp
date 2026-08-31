@@ -23,6 +23,8 @@ namespace compare
 
 	OrderRule_::OrderRule_(OrderRule_ &&other_)
 	{
+		if (str_ == nullptr || strlen(str_) != 3)
+			throw std::runtime_error("OrderRule_::OrderRule_(): 字符串长度小于3，无法构造OrderRule_对象");
 		for (int i = 0; i < 3; i++)
 			this->str_[i] = other_.str_[i];
 	}
