@@ -25,4 +25,9 @@ std::cout << o << std::endl;    // 可以直接输出Order对象，至于效果�
 * 被废除的运算符compare函数是**不会**使用的。比如，如果你废除了==运算符，那么即使a == b，也只会返回*cannot_compare*
 * Order类内置了*great*, _less_, _equal_ 和 _cannot_compare_ 四个静态变量，同时，内置了 _operator<<_ ，可以**直接** cout << 使用
 
+## compare 库 API 约定
+
+### Order 对象数字比较特殊规则
+为了1:1还原C++内置的`compare`库, 所有 _Order_ 对象均可与整数进行比较，但**仅限于与 0 比较**
+
 以上就是说明，总体来说，就没了。

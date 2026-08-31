@@ -7,7 +7,7 @@ namespace compare
 {
 	OrderRule_::OrderRule_(const std::string& str_)
 	{
-		if (str_.size() < 3)
+		if (str_.size() != 3)
 			throw std::runtime_error("OrderRule_::OrderRule_(): 字符串长度小于3，无法构造OrderRule_对象");
 		for (int i = 0; i < 3; i++)
 			this->str_[i] = str_[i];
@@ -15,7 +15,7 @@ namespace compare
 
 	OrderRule_::OrderRule_(const char* str_)
 	{
-		if (str_ == nullptr || strlen(str_) < 3)
+		if (str_ == nullptr || strlen(str_) != 3)
 			throw std::runtime_error("OrderRule_::OrderRule_(): 字符串长度小于3，无法构造OrderRule_对象");
 		for (int i = 0; i < 3; i++)
 			this->str_[i] = str_[i];
