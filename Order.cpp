@@ -70,7 +70,7 @@ namespace compare
 		if (val_ != 0 || this->val_ == OrderValue_::cannot_compare_)
 			throw std::runtime_error("Order::operator==(): 未知的操作: 与不为0的数比较或将cannot_compare与其它数字进行比较");
 
-		return (this->val_ == static_cast<OrderValue_>(val_));
+		return (this->val_ == OrderValue_::equal_);
 	}
 
 	bool Order::operator>(int val_) const
@@ -78,7 +78,7 @@ namespace compare
 		if (val_ != 0 || this->val_ == OrderValue_::cannot_compare_)
 			throw std::runtime_error("Order::operator>(): 未知的操作: 与不为0的数比较或将cannot_compare与其它数字进行比较");
 
-		return (this->val_ > static_cast<OrderValue_>(val_));
+		return (this->val_ > OrderValue_::equal_);
 	}
 
 	bool Order::operator<(int val_) const
@@ -86,7 +86,7 @@ namespace compare
 		if (val_ != 0 || this->val_ == OrderValue_::cannot_compare_)
 			throw std::runtime_error("Order::operator<(): 未知的操作: 与不为0的数比较或将cannot_compare与其它数字进行比较");
 
-		return (this->val_ < static_cast<OrderValue_>(val_));
+		return (this->val_ < OrderValue_::equal_);
 	}
 
 	std::ostream &operator<<(std::ostream &os, const Order &order_)
