@@ -25,7 +25,7 @@ namespace compare
 		~OrderRule_() = default;
 
 		OrderRule_(const OrderRule_&) = delete;
-		OrderRule_(OrderRule_&&) = delete;
+		OrderRule_(OrderRule_&&);
 		OrderRule_ &operator=(const OrderRule_&) = delete;
 		OrderRule_ &operator=(OrderRule_&&) = delete;
 

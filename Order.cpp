@@ -21,6 +21,12 @@ namespace compare
 			this->str_[i] = str_[i];
 	}
 
+	OrderRule_::OrderRule_(OrderRule_ &&other_)
+	{
+		for (int i = 0; i < 3; i++)
+			this->str_[i] = other_.str_[i];
+	}
+
 	bool OrderRule_::useEqual() const
 	{
 		if (this->str_[1] != '=' && this->str_[1] != '!')
