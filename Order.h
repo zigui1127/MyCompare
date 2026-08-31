@@ -6,6 +6,14 @@
 
 namespace compare
 {
+	enum class OrderValue_ : std::uint8_t
+	{
+		less_				= 0,
+		equal_				= 1,
+		greater_			= 2,
+		cannot_compare_		= 3
+	};
+
 	class OrderRule_
 	{
 	private:
@@ -28,9 +36,10 @@ namespace compare
 	class Order
 	{
 	private:
-		uint8_t val_;
+		OrderValue_ val_;
 		Order() = delete;
-		Order(int val): val_(val) {}
+		Order(const OrderValue_ &other_) : val_(other_) {}
+		Order(int val) : val_(static_cast<OrderValue_>(val)) {}
 	public:
 		Order(const Order&);
 		Order &operator=(const Order&);
@@ -45,18 +54,18 @@ namespace compare
 		bool operator<=(const Order&) const = delete;
 		bool operator>=(const Order&) const = delete;
 
-		static Order buildGreater_() {return Order(2);}
-		static Order buildLess_() {return Order(0);}
-		static Order buildEqual_() {return Order(1);}
-		static Order buildCannotCompare_() {return Order(3);}
+		static Order buildGreater_() {return {OrderValue_::greater_};}
+		static Order buildLess_() {return {OrderValue_::less_};}
+		static Order buildEqual_() {return {OrderValue_::equal_};}
+		static Order buildCannotCompare_() {return {OrderValue_::cannot_compare_};}
 
 		friend std::ostream &operator<<(std::ostream &, const Order &);
 	};
 
-	inline const Order greater = Order::buildGreater_();
-	inline const Order less = Order::buildLess_();
-	inline const Order equal = Order::buildEqual_();
-	inline const Order cannot_compare = Order::buildCannotCompare_();
+	inline const Order greater			= Order::buildGreater_();
+	inline const Order less				= Order::buildLess_();
+	inline const Order equal			= Order::buildEqual_();
+	inline const Order cannot_compare	= Order::buildCannotCompare_();
 
 	template<typename T_>
 	const Order &compare(const T_ &a, const T_ &b, const OrderRule_ &rules_ = "<=>")

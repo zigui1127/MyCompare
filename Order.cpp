@@ -60,24 +60,33 @@ namespace compare
 
 	bool Order::operator==(int val_) const
 	{
-		return (this->val_ == val_);
+		if (val_ != 0 || this->val_ == OrderValue_::cannot_compare_)
+			throw std::runtime_error("Order::operator==(): 未知的操作: 与不为0的数比较或将cannot_compare与其它数字进行比较");
+
+		return (this->val_ == static_cast<OrderValue_>(val_));
 	}
 
 	bool Order::operator>(int val_) const
 	{
-		return (this->val_ > val_);
+		if (val_ != 0 || this->val_ == OrderValue_::cannot_compare_)
+			throw std::runtime_error("Order::operator>(): 未知的操作: 与不为0的数比较或将cannot_compare与其它数字进行比较");
+
+		return (this->val_ > static_cast<OrderValue_>(val_));
 	}
 
 	bool Order::operator<(int val_) const
 	{
-		return (this->val_ < val_);
+		if (val_ != 0 || this->val_ == OrderValue_::cannot_compare_)
+			throw std::runtime_error("Order::operator<(): 未知的操作: 与不为0的数比较或将cannot_compare与其它数字进行比较");
+
+		return (this->val_ < static_cast<OrderValue_>(val_));
 	}
 
 	std::ostream &operator<<(std::ostream &os, const Order &order_)
 	{
-		if (!order_.val_)	os << "小于";
-		else if (order_.val_ == 1)	os << "等于";
-		else if (order_.val_ == 2)	os << "大于";
+		if (order_.val_ == static_cast<OrderValue_>(0))	os << "小于";
+		else if (order_.val_ == static_cast<OrderValue_>(1))	os << "等于";
+		else if (order_.val_ == static_cast<OrderValue_>(2))	os << "大于";
 		else	os << "无法比较";
 
 		return os;
