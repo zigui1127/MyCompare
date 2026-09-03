@@ -7,6 +7,15 @@
 
 namespace compare
 {
+#ifdef BETTER_ORDERVALUE
+	enum class OrderValue_: std::uint8_t
+	{
+		less_				= 0x0000,
+		equal_				= 0x0010,
+		greater_			= 0x0100,
+		cannot_compare_		= 0x1000
+	};
+#else
 	enum class OrderValue_ : std::uint8_t
 	{
 		less_				= 0,
@@ -14,6 +23,7 @@ namespace compare
 		greater_			= 2,
 		cannot_compare_		= 3
 	};
+#endif
 
 	class OrderRule_
 	{
