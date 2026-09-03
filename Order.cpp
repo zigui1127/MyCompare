@@ -91,10 +91,10 @@ namespace compare
 
 	std::ostream &operator<<(std::ostream &os, const Order &order_)
 	{
-		if (order_.val_ == static_cast<OrderValue_>(0))	os << "小于";
-		else if (order_.val_ == static_cast<OrderValue_>(1))	os << "等于";
-		else if (order_.val_ == static_cast<OrderValue_>(2))	os << "大于";
-		else	os << "无法比较";
+		if (order_.val_ == OrderValue_::less_)	os << "小于";
+		else if (order_.val_ == OrderValue_::equal_)	os << "等于";
+		else if (order_.val_ == OrderValue_::greater_)	os << "大于";
+		else if (order_.val_ == OrderValue_::cannot_compare_)	os << "无法比较";
 
 		return os;
 	}
