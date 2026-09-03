@@ -7,7 +7,7 @@
 
 namespace compare
 {
-#ifdef BETTER_ORDERVALUE
+#ifdef BETTER_ORDERVALUE_
 	enum class OrderValue_: std::uint8_t
 	{
 		less_				= 0x0000,
