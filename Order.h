@@ -16,7 +16,7 @@ namespace compare
 		cannot_compare_		= 0x1000
 	};
 #else
-	enum class OrderValue_ : std::uint_t
+	enum class OrderValue_ : std::uint8_t
 	{
 		less_				= 0,
 		equal_				= 1,
