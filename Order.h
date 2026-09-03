@@ -1,14 +1,14 @@
 #ifndef AAA_COMPARE_H
 #define AAA_COMPARE_H
 
-#include <iostream>
+#include <iosfwd>
 #include <string>
 #include <cstdint>
 
 namespace compare
 {
 #ifdef BETTER_ORDERVALUE_
-	enum class OrderValue_: std::uint8_t
+	enum class OrderValue_: std::uint16_t
 	{
 		less_				= 0x0000,
 		equal_				= 0x0010,
@@ -16,7 +16,7 @@ namespace compare
 		cannot_compare_		= 0x1000
 	};
 #else
-	enum class OrderValue_ : std::uint8_t
+	enum class OrderValue_ : std::uint_t
 	{
 		less_				= 0,
 		equal_				= 1,
